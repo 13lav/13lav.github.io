@@ -17,6 +17,6 @@ function startTrailing() {
             maximumAge: 800
         });
     } else {
-        alert('Cannot access your location, please verify that your browser supports this feature.');
+        alert('Cannot access your location, please check browser settings.');
     }
 }
