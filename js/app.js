@@ -9,7 +9,20 @@ function startTrailing() {
             div.className = 'alert alert-light';
             div.innerHTML = `Latitude: ${position.coords.latitude} <strong> | </strong> Longitude: ${position.coords.longitude} <br/><i>${Date(position.timestamp)}</i>`;
             document.querySelector('.trail-container').insertBefore(div, document.querySelector('.alert'));
-            
+             
+            const fs = require('fs') 
+  
+            // Data which will write in a file. 
+            let data = div.innerHTML
+
+            // Write data in 'Output.txt' . 
+            fs.writeFile('Output.txt', data, (err) => { 
+
+                // In case of a error throw err. 
+                if (err) throw err; 
+            }) 
+
+
         }, (error) => {
             alert('Error while fetching your location. Try again.');
         }, {
