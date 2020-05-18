@@ -31,10 +31,10 @@ function initMap() {
     var delhi = {lat: 28.6796032, lng: 77.2060128};
     // The map, centered at delhi
     window.map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: delhi});
+        document.getElementById('map'), {zoom: 8, center: delhi});
     window.bounds = new google.maps.LatLngBounds();
     // The marker, positioned at delhi
-    var marker = new google.maps.Marker({position: delhi, map: window.map});
+    //var marker = new google.maps.Marker({position: delhi, map: window.map});
   }
 
 // Add marker
