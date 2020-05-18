@@ -1,7 +1,10 @@
+// Button to start trail generation
 const btnFetchLocation = document.getElementById('btn-fetch-location').addEventListener('click', startTrailing);
+
 window.map = undefined;
 window.bounds = undefined;
 
+// Start Trail generation function
 function startTrailing() {
 
     if (navigator.geolocation) {
@@ -34,6 +37,7 @@ function initMap() {
     var marker = new google.maps.Marker({position: delhi, map: window.map});
   }
 
+// Add marker
 function addMarkerForNewLocation(lat, long) {
     if (window.map != undefined) {
         var newLocation = {lat: lat, lng: long};
