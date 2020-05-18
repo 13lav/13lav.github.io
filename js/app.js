@@ -1,15 +1,16 @@
 const btnFetchLocation = document.getElementById('btn-fetch-location').addEventListener('click', startTrailing);
+window.map = undefined;
+window.bounds = undefined;
 
 function startTrailing() {
 
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition((position) => {
-            const coords = [position.coords.latitude, position.coords.longitude];
             const div = document.createElement('div');
             div.className = 'alert alert-light';
             div.innerHTML = `Latitude: ${position.coords.latitude} <strong> | </strong> Longitude: ${position.coords.longitude} <br/><i>${Date(position.timestamp)}</i>`;
             document.querySelector('.trail-container').insertBefore(div, document.querySelector('.alert'));
-            
+            addMarkerForNewLocation(position.coords.latitude, position.coords.longitude)
         }, (error) => {
             alert('Error while fetching your location. Try again.');
         }, {
@@ -18,5 +19,28 @@ function startTrailing() {
         });
     } else {
         alert('Cannot access your location, please check browser settings.');
+    }
+}
+
+// Initialize and add the map
+function initMap() {
+    // The location of delhi
+    var delhi = {lat: 28.6796032, lng: 77.2060128};
+    // The map, centered at delhi
+    window.map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 8, center: delhi});
+    window.bounds = new google.maps.LatLngBounds();
+    // The marker, positioned at delhi
+    var marker = new google.maps.Marker({position: delhi, map: window.map});
+  }
+
+function addMarkerForNewLocation(lat, long) {
+    if (window.map != undefined) {
+        var newLocation = {lat: lat, lng: long};
+        // The marker, positioned at new location
+        var marker = new google.maps.Marker({position: newLocation, map: window.map});
+        // center map
+        const center = new google.maps.LatLng(lat, long);
+        window.map.panTo(center);
     }
 }

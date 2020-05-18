@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Location Trailer</title>
+    <style>
+        .map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Jy9DUAS5xATcH4MpZZCs5EgCuFvnfv4&callback=initMap">
+    </script>
 </head>
-
 <body class="bg-light">
+    <div id="map" class="map"></div>
     <div class="container pt-3">
         <div class="row">
             <div class="col-lg-12">
@@ -22,7 +31,6 @@
             </div>
         </div>
     </div>
-
     <script src="js/app.js"></script>
 </body>
 
