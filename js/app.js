@@ -4,6 +4,15 @@ const btnFetchLocation = document.getElementById('btn-fetch-location').addEventL
 window.map = undefined;
 window.bounds = undefined;
 
+// Initialize and add the map
+function initMap() {
+    // The location of delhi
+    var delhi = {lat: 28.6796032, lng: 77.2060128};
+    
+    window.map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: delhi});
+    window.bounds = new google.maps.LatLngBounds();
+  }
+
 // Start Trail generation function
 function startTrailing() {
 
@@ -24,16 +33,6 @@ function startTrailing() {
         alert('Cannot access your location, please check browser settings.');
     }
 }
-
-// Initialize and add the map
-function initMap() {
-    // The location of delhi
-    var delhi = {lat: 28.6796032, lng: 77.2060128};
-    // The map, centered at delhi
-    window.map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 13, center: delhi});
-    window.bounds = new google.maps.LatLngBounds();
-  }
 
 // Add marker
 function addMarkerForNewLocation(lat, long) {
