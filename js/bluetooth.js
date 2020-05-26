@@ -1,4 +1,4 @@
-const blLog = document.querySelector('.blearea');
+const blLog = document.querySelector('.bluarea');
 
 // Event to start bluetooth
 document.querySelector('#startbt').addEventListener('click', startBluetooth);
