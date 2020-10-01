@@ -1,7 +1,9 @@
 // Button to start trail generation
 const btnFetchLocation = document.getElementById('btn-fetch-location').addEventListener('click', startTrailing);
 
+// map window initialized
 window.map = undefined;
+// bounds initialized
 window.bounds = undefined;
 
 // Initialize and add the map
@@ -9,6 +11,7 @@ function initMap() {
     // The location of delhi
     var delhi = {lat: 28.6796032, lng: 77.2060128};
     
+    // set default map zoom to 13
     window.map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: delhi});
     window.bounds = new google.maps.LatLngBounds();
   }
@@ -16,6 +19,7 @@ function initMap() {
 // Start Trail generation function
 function startTrailing() {
 
+    // check if we can access the location
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition((position) => {
             const div = document.createElement('div');
@@ -24,12 +28,14 @@ function startTrailing() {
             document.querySelector('.trail-container').insertBefore(div, document.querySelector('.alert'));
             addMarkerForNewLocation(position.coords.latitude, position.coords.longitude)
         }, (error) => {
+            // no location found throw error
             alert('Error while fetching your location. Try again.');
         }, {
             enableHighAccuracy: true,
             maximumAge: 800
         });
     } else {
+            // no location found throw error
         alert('Cannot access your location, please check browser settings.');
     }
 }
